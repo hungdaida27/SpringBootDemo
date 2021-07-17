@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<table class="table">
+    <tbody>
+    <tr th:each="person, iStat:${people}" >
+        <td ><img th:src="@{https://i.pinimg.com/originals/eb/b0/2a/ebb02aedec9bc74f65e38311c7e14d34.png}" alt="Avatar" style="width:250px;height:175px"/></td>
+        <td th:utext="|${person.name}  <br />  ${person.nationality}  <br />   ${person.birthdate}   <br />  ${person.gender} |">Long</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

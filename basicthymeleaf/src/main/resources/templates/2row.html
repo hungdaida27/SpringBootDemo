@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display tow rows</title>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="person, iStat:${people}">
+            <td th:if="${iStat.index}==0"><img th:src="@{https://i.pinimg.com/originals/eb/b0/2a/ebb02aedec9bc74f65e38311c7e14d34.png}" alt="Avatar" style="width:150px;height:150px"/></td>
+            <td th:if="${iStat.index}==0" th:utext="|${person.name}  <br />  ${person.nationality}  <br />   ${person.birthdate}   <br />  ${person.gender} |">Long</td>
+
+            <td th:if="${iStat.index}==0"><img th:src="@{https://i.pinimg.com/originals/eb/b0/2a/ebb02aedec9bc74f65e38311c7e14d34.png}" alt="Avatar" style="width:150px;height:150px"/></td>
+            <td th:if="${iStat.index}==0" th:utext="|${person.name}  <br />  ${person.nationality}  <br />   ${person.birthdate}   <br />  ${person.gender} |">Long</td>
+        </tr>
+
+    </tbody>
+</table>
+</body>
+</html>

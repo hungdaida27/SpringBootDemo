@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template.html :: header">
+<body>
+<header th:insert="template.html :: topmenu"> </header>
+<div class="container">
+
+</div>
+
+<div>
+  <h1 class="text-center">Add Person</h1>
+</div>
+<div>
+  <form action="#" th:action="@{/person/save}" th:object="${person}" method="post" novalidate="novalidate">
+    <input type="hidden" placeholder="id" th:field="*{id}"><br><br>
+    <div>
+      <label for="name"> Full Name</label><br>
+      <input type="text" id="name" th:field="*{name}">
+    </div>
+    <br>
+    <div>
+      <label for="job"> Job   </label><br>
+      <select name="job" id="job" th:field="*{job}">
+        <option value="Developer">Developer</option>
+        <option value="Taxi Driver">Taxi Driver</option>
+        <option value="Biker">Biker</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <input type="radio" name="gender" id="male" th:value="true" th:field="*{gender}">
+      <label for="male">Male</label>
+      <input type="radio" name="gender" id="female" th:value="false" th:field="*{gender}">
+      <label for="male">FeMale</label>
+    </div>
+    <br>
+    <div>
+      <label for="birth">BirthDay   </label>
+      <input type="date" id="birth" placeholder="birthDay" th:field="*{birthDay}"><br>
+    </div>
+    <br>
+    <div>
+      <button type="submit" class="btn btn-primary mx-3">Save</button>
+    </div>
+
+  </form>
+</div>
+</body>
+</html>

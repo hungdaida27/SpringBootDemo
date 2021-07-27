@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="template.html :: header">
+<body>
+<header th:insert="template.html :: topmenu"></header>
+<div class="container">
+  <div class="row my-5 justify-content-center">
+    <div class="col-2 mx-auto">
+      <img th:src="@{'/photos/' + ${person.id} + '.jpg'}" alt="Photo" class="img-fluid" width="200">
+      <div class="d-flex justify-content-center">
+        <a th:href="@{/person/edit/{id}(id=${person.id})}">Edit</a>&nbsp;&nbsp;
+        <a th:href="@{/person/delete/{id}(id=${person.id})}">Delete</a><br>
+      </div>
+
+    </div>
+    <div class="col-4 mx-auto ">
+      <h3>Information</h3>
+      <p th:text="${person.name}"></p>
+      <p th:text="${person.birthDay}"></p>
+      <p th:text="${person.job}"></p>
+      <p th:if="${person.gender}">Male</p>
+      <p th:unless="${person.gender}">Fermale</p>
+    </div>
+  </div>
+</body>
+</html>

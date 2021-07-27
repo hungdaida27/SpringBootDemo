@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template.html :: header">
+<body>
+<header th:insert="template.html :: topmenu"></header>
+<div class="container">
+
+    <div>
+        <h1 class="text-center">Add Person</h1>
+    </div>
+
+    <div>
+        <div class="container" style="display: flex; justify-content: center; align-items: center;">
+            <form action="#" th:action="@{/person/save}" th:object="${person}" method="POST"
+                  enctype="multipart/form-data">
+                <input type="hidden" placeholder="id" th:field="*{id}"/><br><br>
+                <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: #d70404;">Name Error</p>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <input type="text" th:field="*{name}" placeholder="Name"> <br> <br>
+                    </div>
+                </div>
+                <p class="text-danger" th:if="${#fields.hasErrors('job')}" th:errors="*{job}" style="color: red;">Job
+                    Error</p>
+                <label for="job"> Job </label>
+                <select name="job" id="job" th:field="*{job}">
+                    <option value="Developer">Developer</option>
+                    <option value="Taxi Driver">Taxi Driver</option>
+                    <option value="Biker">Biker</option>
+                </select>
+                <br> <br>
+                <label for="isFemale">Female</label>
+                <input type="radio" th:field="*{gender}" value="true" id="isFemale">
+                <label for="isFemale">Male</label>
+                <input type="radio" th:field="*{gender}" value="false" id="isFemale"> <br> <br>
+                <p class="text-danger" th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}"
+                   style="color: red;">Birthday Error</p>
+                <input type="date" th:field="*{birthDay}"> <br> <br>
+                <p class="text-danger" th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}" style="color: red;">
+                    Photo Error</p>
+                <input type="file" th:field="*{photo}"> <br><br>
+                <button type="submit" class="btn btn-primary mx-3">Save</button>
+                <button type="reset" class="btn btn-primary mx-3">Cancel</button>
+            </form>
+        </div>
+</div>
+
+</body>
+</html>

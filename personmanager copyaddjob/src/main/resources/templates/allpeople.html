@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template.html :: header">
+<body>
+<header th:insert="template.html :: topmenu"></header>
+<br>
+<div class="container">
+    <div class="row">
+        <h3 class="col-sm-6">List of people</h3>
+    </div>
+
+    <div class="row my-3">
+        <div>
+            <a href="/person/add"><button class="btn btn-primary mx-3" >Add Person</button></a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <th>Avatar</th>
+        <th>Name</th>
+        <th>Job</th>
+        <th>Gender</th>
+        <th>Birthdate</th>
+        <th>Action</th>
+        </thead>
+        <tbody>
+        <tr th:each="person: ${people}">
+            <td><a th:href="@{/person/{id}(id=${person.id})}" class="col-sm-6">
+                <img class="img-fluid" th:src="@{'/photos/' + ${person.id} + '.jpg'}"
+                     alt="people image" width="100"/>
+            </a></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.job}"></td>
+            <td th:if="${person.gender}">Male</td>
+            <td th:unless="${person.gender}">Female</td>
+            <td th:text="${person.birthDay}"></td>
+            <td>
+        <span>
+            <a th:href="@{/person/edit/{id}(id=${person.id})}">Edit</a>
+        </span>&nbsp;&nbsp;
+                <span>
+            <a th:href="@{/person/delete/{id}(id=${person.id})}">Delete</a>
+        </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

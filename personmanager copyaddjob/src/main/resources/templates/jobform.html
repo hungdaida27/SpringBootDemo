@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="template.html :: header">
+<body>
+<header th:insert="template.html :: topmenu"></header>
+<div class="container">
+
+  <div style="display: flex; justify-content: center; margin: 30px 0">
+    <h2>Add Job</h2>
+  </div>
+  <form th:object="${job}" method="POST" th:action="@{/job/save}">
+    <input type="hidden" th:field = "*{id}">
+    <div class="mb-3">
+      <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;">Name Error</p>
+      <input th:field="*{name}" type="text" class="form-control" id="exampleInputEmail1"
+             aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">A new job name must be different from the other jobs</div>
+    </div>
+    <div class="position-relative" style="margin-top: 30px;">
+      <div class="position-absolute top-0 start-50 translate-middle">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>
